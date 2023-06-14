@@ -140,7 +140,11 @@ export const Dashboard = () => {
                                     ...provided.draggableProps.style,
                                   }}
                                 >
-                                  <BugCard name={item.name} color={column.bg} />
+                                  <BugCard
+                                    name={item.name}
+                                    color={column.bg}
+                                    id={item.id}
+                                  />
                                 </Card>
                               );
                             }}

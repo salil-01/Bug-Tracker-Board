@@ -15,27 +15,18 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { useState } from "react";
-export const AddModal = ({ bug, disabled }) => {
+export const AddModal = ({ columnId, handleAdd }) => {
   // console.log(disabled);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [name, setName] = useState("");
   //   const dispatch = useDispatch();
   const handleClick = () => {
     let obj = {
-      id: +(Math.random() * 10000).toString().substring(0, 4),
+      id: `KJ${(Math.random() * 10000).toString().substring(0, 4)}`,
       name,
     };
     // console.log(obj);
-    if (bug == "critical") {
-      dispatch(addCritical(obj));
-    } else if (bug == "major") {
-      dispatch(addMajor(obj));
-    } else if (bug == "medium") {
-      dispatch(addMedium(obj));
-    } else if (bug == "low") {
-      dispatch(addLow(obj));
-    }
-    onClose();
+    handleAdd(obj, columnId);
   };
   return (
     <>

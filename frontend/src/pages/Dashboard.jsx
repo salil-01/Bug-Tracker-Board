@@ -10,6 +10,16 @@ import { AddModal } from "../components/AddModal";
 
 export const Dashboard = () => {
   const [columns, setColumns] = useState(columnsFromBackend);
+
+  //to add bugs
+  const handleAdd = (obj, id) => {
+    // console.log(obj, id);
+    let newObj = {
+      ...columns,
+      [id]: { ...columns[id], items: [...columns[id]["items"], obj] },
+    };
+    setColumns(newObj);
+  };
   // console.log(columns);
   const onDragEnd = (result, columns, setColumns) => {
     //if not placing in any of the container then simply return to its original place
@@ -87,7 +97,7 @@ export const Dashboard = () => {
                   {column.name}
                 </Text>
 
-                <AddModal />
+                <AddModal columnId={columnId} handleAdd={handleAdd} />
               </HStack>
 
               {/* droppable container where one can drop card after drag */}

@@ -25,13 +25,13 @@ export const AddModal = ({ columnId, handleAdd }) => {
       id: `KJ${(Math.random() * 10000).toString().substring(0, 4)}`,
       name,
     };
-    // console.log(obj);
     handleAdd(obj, columnId);
+    onClose();
   };
   return (
     <>
       <Tooltip hasArrow label="Report a Bug" background={"gray"}>
-        <AddIcon onClick={onOpen} />
+        <AddIcon onClick={onOpen} _hover={{ cursor: "pointer" }} />
       </Tooltip>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

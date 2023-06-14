@@ -1,10 +1,12 @@
 // import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import { Card, Flex, Stack, Text } from "@chakra-ui/react";
+import { Card, Flex, HStack, Stack, Text, Tooltip } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { columnsFromBackend } from "../utilis/data";
 import { useEffect } from "react";
 import { BugCard } from "../components/BugCard";
+import { AddModal } from "../components/AddModal";
 
 export const Dashboard = () => {
   const [columns, setColumns] = useState(columnsFromBackend);
@@ -69,18 +71,24 @@ export const Dashboard = () => {
         {Object.entries(columns).map(([columnId, column], index) => {
           return (
             <Stack key={columnId} flexDirection={"column"} gap={"10px"}>
-              <Text
-                textAlign={"center"}
-                fontSize={"1.1rem"}
-                fontWeight={"500"}
-                // color={column.bg}
+              <HStack
                 backgroundColor={column.bg}
-                color={column.bg === "yellow" ? "black" : "white"}
                 borderRadius={"5px"}
                 padding={"5px"}
+                color={column.bg === "yellow" ? "black" : "white"}
+                justifyContent={"space-around"}
+                alignItems={"center"}
               >
-                {column.name}
-              </Text>
+                <Text
+                  fontSize={"1.1rem"}
+                  fontWeight={"500"}
+                  // color={column.bg}
+                >
+                  {column.name}
+                </Text>
+
+                <AddModal />
+              </HStack>
 
               {/* droppable container where one can drop card after drag */}
               <Droppable droppableId={columnId} key={columnId}>
@@ -94,6 +102,7 @@ export const Dashboard = () => {
                       padding={"20px"}
                       minHeight={"70vh"}
                       boxShadow={"xl"}
+                      gap={"0px"}
                       backgroundColor={
                         snapshot.isDraggingOver ? "lightgray" : "teal.100"
                       }
@@ -115,6 +124,7 @@ export const Dashboard = () => {
                                   backgroundColor={
                                     snapshot.isDragging ? "#263B4A" : column.bg
                                   }
+                                  margin={"0px 0px 8px 0px"}
                                   style={{
                                     userSelect: "none",
                                     ...provided.draggableProps.style,

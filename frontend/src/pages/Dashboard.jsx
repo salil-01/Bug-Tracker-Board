@@ -95,7 +95,7 @@ export const Dashboard = () => {
     setColumns(columnsFromBackend);
   }, []);
   return (
-    <Flex width={"70%"} margin={" 40px auto"} justifyContent={"space-between"}>
+    <Flex width={"100%"} margin={" 40px auto"} justifyContent={"space-between"}>
       {/* context for drag and drop */}
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
@@ -103,7 +103,12 @@ export const Dashboard = () => {
         {/* making columns as per data from db */}
         {Object.entries(columns).map(([columnId, column], index) => {
           return (
-            <Stack key={columnId} flexDirection={"column"} gap={"10px"}>
+            <Stack
+              border={"1px solid"}
+              key={columnId}
+              flexDirection={"column"}
+              gap={"10px"}
+            >
               <HStack
                 backgroundColor={column.bg}
                 borderRadius={"5px"}

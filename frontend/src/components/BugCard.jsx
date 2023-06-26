@@ -1,5 +1,5 @@
 import { DeleteIcon } from "@chakra-ui/icons";
-import { CardBody, Flex, Text } from "@chakra-ui/react";
+import { Button, CardBody, Flex, Text } from "@chakra-ui/react";
 
 export const BugCard = ({ id, name, color, handleDelete, columnId }) => {
   const handleClick = () => {
@@ -16,11 +16,17 @@ export const BugCard = ({ id, name, color, handleDelete, columnId }) => {
           >
             {name}
           </Text>
-          <DeleteIcon
-            onClick={handleClick}
-            _hover={{ cursor: "pointer" }}
-            color={color === "yellow" ? "black" : "white"}
-          />
+          <Button
+            variant={"ghost"}
+            _hover={{ cursor: "pointer", bg: "red", color: "white" }}
+            border={"1px solid"}
+          >
+            <DeleteIcon
+              // border={"1px solid red"}
+              onClick={handleClick}
+              color={color === "yellow" ? "black" : "white"}
+            />
+          </Button>
         </Flex>
       </CardBody>
     </>

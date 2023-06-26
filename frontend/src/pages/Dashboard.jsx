@@ -104,7 +104,6 @@ export const Dashboard = () => {
         {Object.entries(columns).map(([columnId, column], index) => {
           return (
             <Stack
-              border={"1px solid"}
               minW={"20%"}
               key={columnId}
               flexDirection={"column"}

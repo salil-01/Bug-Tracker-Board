@@ -28,25 +28,19 @@ export const BugCard = ({ id, name, color, handleDelete, columnId }) => {
               <Button
                 variant={"ghost"}
                 width={"10px"}
-                _hover={{ cursor: "pointer", bg: "red", color: "white" }}
+                _hover={{ cursor: "pointer", color: "white" }}
               >
-                <EditIcon
-                  // border={"1px solid red"}
-                  onClick={handleDeleteClick}
-                  color={color === "yellow" ? "black" : "white"}
-                />
+                <EditIcon color={color === "yellow" ? "black" : "white"} />
               </Button>
             </Tooltip>
             <Tooltip hasArrow label="Delete" bg="gray.300" color="black">
               <Button
                 variant={"ghost"}
                 width={"10px"}
-                _hover={{ cursor: "pointer", bg: "red", color: "white" }}
+                _hover={{ cursor: "pointer", color: "white" }}
+                onClick={handleDeleteClick}
               >
-                <DeleteIcon
-                  onClick={handleDeleteClick}
-                  color={color === "yellow" ? "black" : "white"}
-                />
+                <DeleteIcon color={color === "yellow" ? "black" : "white"} />
               </Button>
             </Tooltip>
           </HStack>

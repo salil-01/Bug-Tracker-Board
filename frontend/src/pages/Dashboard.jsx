@@ -12,14 +12,37 @@ export const Dashboard = () => {
   const [columns, setColumns] = useState(columnsFromBackend);
 
   //to add bugs
-  const handleAdd = (obj, id) => {
+  const handleAdd = (objParams, idParams) => {
     // console.log(obj, id);
-    let newObj = {
+    let updatedState = {
       ...columns,
-      [id]: { ...columns[id], items: [...columns[id]["items"], obj] },
+      [idParams]: {
+        ...columns[idParams],
+        items: [...columns[idParams]["items"], objParams],
+      },
     };
-    setColumns(newObj);
+    setColumns(updatedState);
   };
+
+  //delete a bug
+  const handleDelete = (columnIdParams, itemIdParams) => {
+    //columnId and Item of specific card coming from card itself
+
+    //filtering out only the card on which user has clicked delete icon
+    let updatedState = {
+      ...columns,
+      [columnIdParams]: {
+        ...columns[columnIdParams],
+        items: columns[columnIdParams].items.filter(
+          (el) => el.id !== itemIdParams
+        ),
+      },
+    };
+    // console.log(updatedState);
+    //setting state with the updated value
+    setColumns(updatedState);
+  };
+
   // console.log(columns);
   const onDragEnd = (result, columns, setColumns) => {
     //if not placing in any of the container then simply return to its original place
@@ -144,6 +167,8 @@ export const Dashboard = () => {
                                     name={item.name}
                                     color={column.bg}
                                     id={item.id}
+                                    handleDelete={handleDelete}
+                                    columnId={columnId}
                                   />
                                 </Card>
                               );

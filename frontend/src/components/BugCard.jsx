@@ -1,9 +1,10 @@
 import { DeleteIcon } from "@chakra-ui/icons";
 import { CardBody, Flex, Text } from "@chakra-ui/react";
 
-export const BugCard = ({ id, name, color }) => {
-  const handleDelete = () => {
-    console.log(id);
+export const BugCard = ({ id, name, color, handleDelete, columnId }) => {
+  const handleClick = () => {
+    // console.log(id);
+    handleDelete(columnId, id);
   };
   return (
     <>
@@ -16,7 +17,7 @@ export const BugCard = ({ id, name, color }) => {
             {name}
           </Text>
           <DeleteIcon
-            onClick={handleDelete}
+            onClick={handleClick}
             _hover={{ cursor: "pointer" }}
             color={color === "yellow" ? "black" : "white"}
           />

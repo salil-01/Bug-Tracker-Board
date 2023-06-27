@@ -1,12 +1,5 @@
 import { DeleteIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  CardBody,
-  Flex,
-  HStack,
-  Text,
-  Tooltip,
-} from "@chakra-ui/react";
+import { Button, CardBody, Flex, HStack, Text } from "@chakra-ui/react";
 import { EditModal } from "./EditModal";
 
 export const BugCard = ({
@@ -38,16 +31,15 @@ export const BugCard = ({
               columnId={columnId}
               id={id}
             />
-            <Tooltip hasArrow label="Delete" bg="gray.300" color="black">
-              <Button
-                variant={"ghost"}
-                width={"10px"}
-                _hover={{ cursor: "pointer", color: "white" }}
-                onClick={handleDeleteClick}
-              >
-                <DeleteIcon color={bgColor === "yellow" ? "black" : "white"} />
-              </Button>
-            </Tooltip>
+
+            <Button
+              variant={"ghost"}
+              width={"10px"}
+              _hover={{ cursor: "pointer", color: "white" }}
+              onClick={handleDeleteClick}
+            >
+              <DeleteIcon color={bgColor === "yellow" ? "black" : "white"} />
+            </Button>
           </HStack>
         </Flex>
       </CardBody>

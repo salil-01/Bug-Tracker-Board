@@ -12,7 +12,6 @@ import {
   useDisclosure,
   FormLabel,
   Input,
-  Tooltip,
 } from "@chakra-ui/react";
 import { useState } from "react";
 export const EditModal = ({ bgColor, id, columnId, handleEdit }) => {
@@ -25,16 +24,14 @@ export const EditModal = ({ bgColor, id, columnId, handleEdit }) => {
   };
   return (
     <>
-      <Tooltip hasArrow label="Edit" bg="gray.300" color="black">
-        <Button
-          variant={"ghost"}
-          width={"10px"}
-          _hover={{ cursor: "pointer", color: "white" }}
-          onClick={onOpen}
-        >
-          <EditIcon color={bgColor === "yellow" ? "black" : "white"} />
-        </Button>
-      </Tooltip>
+      <Button
+        variant={"ghost"}
+        width={"10px"}
+        _hover={{ cursor: "pointer", color: "white" }}
+        onClick={onOpen}
+      >
+        <EditIcon color={bgColor === "yellow" ? "black" : "white"} />
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

@@ -170,7 +170,7 @@ export const Dashboard = () => {
                                 >
                                   <BugCard
                                     name={item.name}
-                                    color={column.bg}
+                                    bgColor={column.bg}
                                     id={item.id}
                                     handleDelete={handleDelete}
                                     columnId={columnId}

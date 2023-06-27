@@ -43,6 +43,30 @@ export const Dashboard = () => {
     setColumns(updatedState);
   };
 
+  //edit a bug
+  const handleEdit = (columnIdParams, itemIdParams, name) => {
+    //getting columnId,cardId and text as props
+    // console.log(columnIdParams, itemIdParams, name);
+    //editing out only the card on which user has clicked edit icon
+    let updatedState = {
+      ...columns,
+      [columnIdParams]: {
+        ...columns[columnIdParams],
+        items: columns[columnIdParams].items.map((el) => {
+          if (el.id === itemIdParams) {
+            return {
+              ...el,
+              name,
+            };
+          }
+          return el;
+        }),
+      },
+    };
+    //setting state with the updated value
+    setColumns(updatedState);
+  };
+
   // console.log(columns);
   const onDragEnd = (result, columns, setColumns) => {
     //if not placing in any of the container then simply return to its original place
@@ -174,6 +198,7 @@ export const Dashboard = () => {
                                     id={item.id}
                                     handleDelete={handleDelete}
                                     columnId={columnId}
+                                    handleEdit={handleEdit}
                                   />
                                 </Card>
                               );

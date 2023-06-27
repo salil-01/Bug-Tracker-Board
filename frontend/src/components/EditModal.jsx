@@ -15,13 +15,13 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { useState } from "react";
-export const EditModal = ({ bgColor }) => {
+export const EditModal = ({ bgColor, id, columnId, handleEdit }) => {
   //   console.log(disabled);
   const [name, setName] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleClick = () => {
-    console.log("click");
-    console.log(name);
+    handleEdit(columnId, id, name);
+    onClose();
   };
   return (
     <>

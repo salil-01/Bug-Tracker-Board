@@ -1,4 +1,4 @@
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Button,
   CardBody,
@@ -9,7 +9,14 @@ import {
 } from "@chakra-ui/react";
 import { EditModal } from "./EditModal";
 
-export const BugCard = ({ id, name, bgColor, handleDelete, columnId }) => {
+export const BugCard = ({
+  id,
+  name,
+  bgColor,
+  handleDelete,
+  columnId,
+  handleEdit,
+}) => {
   const handleDeleteClick = () => {
     // console.log(id);
     handleDelete(columnId, id);
@@ -25,7 +32,12 @@ export const BugCard = ({ id, name, bgColor, handleDelete, columnId }) => {
             {name}
           </Text>
           <HStack gap={"0px"}>
-            <EditModal bgColor={bgColor} />
+            <EditModal
+              bgColor={bgColor}
+              handleEdit={handleEdit}
+              columnId={columnId}
+              id={id}
+            />
             <Tooltip hasArrow label="Delete" bg="gray.300" color="black">
               <Button
                 variant={"ghost"}
